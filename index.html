@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+    
+        .checked {
+            text-decoration: line-through;
+        }
+
+    
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b7b3b3;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #taskForm {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #taskInput {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Digite a tarefa">
+        <button type="submit">Cadastrar</button>
+    </form>
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskForm = document.getElementById('taskForm');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        taskForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Evita o recarregamento da página
+
+            const taskText = taskInput.value.trim();
+            if (taskText) {
+                const listItem = document.createElement('li');
+                listItem.textContent = taskText;
+
+                // Adicione o evento de clique para aplicar a classe 'checked'
+                listItem.addEventListener('click', function () {
+                    listItem.classList.toggle('checked');
+                });
+
+                taskList.appendChild(listItem);
+                taskInput.value = ''; // Limpa o campo de entrada
+            }
+        });
+    </script>
+</body>
+</html>
