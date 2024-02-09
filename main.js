@@ -18,4 +18,5 @@ const taskForm = document.getElementById('taskForm');
                 taskList.appendChild(listItem);
                 taskInput.value = ''; // Limpa o campo de entrada
             }
+            
         });
